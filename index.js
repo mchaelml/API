@@ -13,28 +13,33 @@ server.use(restify.authorizationParser())
 
 //var accounts = require('./accounts.js')
 var books = require('./books.js')
-var apikey = 'd0ba136ea0e7bade8e61096631e665b2a0727951'
+var apikey = 'd0ba136ea0e7bade8e61096631e665b2a0727951' //guitarparty api
 //server.get('/library', function(req, res) {
-server.get('/songs', function(req, res) {
+server.get('/weather', function(req, res) { // the GuitarParty Api , ask for help with authentication header
   console.log('GET /library')
-  const searchTerm = req.query.q
+  const searchTerm = req.query.title
   console.log('q='+searchTerm)
   books.search(searchTerm, function(data) {
     console.log(data)
-    var API_KEY = 'd0ba136ea0e7bade8e61096631e665b2a0727951';
-$.ajaxSetup({
-    beforeSend: function(xhr) {
-        xhr.setRequestHeader('Guitarparty-Api-Key', API_KEY);
-    }
-});
     res.setHeader('content-type', 'application/json');
-    res.setHeader('Guitarparty-Api-Key',apikey)
+    //res.setHeader('Guitarparty-Api-Key',apikey)
     res.send(data.code, data.response);
     res.end();
   })
 })
 
-//
+server.get('/movies', function(req, res) {
+  console.log('GET /library')
+  const searchTerm = req.query.title
+  console.log('q='+searchTerm)
+  books.search(searchTerm, function(data) {
+    console.log(data)
+    res.setHeader('content-type', 'application/json');
+    res.send(data.code, data.response);
+    res.end();
+  })
+})
+
 server.post('/accounts', function(req, res) {
   console.log('POST /accounts')
   const auth = req.authorization
