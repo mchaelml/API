@@ -24,9 +24,9 @@ exports.search = function(query, callback) {
     //const items = json.items
     //console.log(json)
     const movie = json.map(function(element) {
-      return {'title':element.title} //title:element.volumeInfo.title, authors:element.volumeInfo.authors}
+      return {'Title':element.title,'Directors':element.directors,'Rating':element.metascore,'Year':element.year}
     })
     console.log(movie)
-    callback({code:200, response:{status:'success', message:movie.length+' books found', data:movie}})
+    callback({code:200, response:{status:'success', message:movie.length+' movies found', data:movie}})
   })
 }

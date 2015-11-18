@@ -10,16 +10,18 @@ server.use(restify.fullResponse())
 server.use(restify.queryParser())
 server.use(restify.bodyParser())
 server.use(restify.authorizationParser())
-
 //var accounts = require('./accounts.js')
-var books = require('./books.js')
+var imdb = require('./imdb.js')
+var guitarparty = require('./guitarparty.js')
+
+
 var apikey = 'd0ba136ea0e7bade8e61096631e665b2a0727951' //guitarparty api
 //server.get('/library', function(req, res) {
-server.get('/weather', function(req, res) { // the GuitarParty Api , ask for help with authentication header
+server.get('/songs/', function(req, res) { // the GuitarParty Api , ask for help with authentication header
   console.log('GET /library')
-  const searchTerm = req.query.title
+  const searchTerm = req.query.query
   console.log('q='+searchTerm)
-  books.search(searchTerm, function(data) {
+  guitarparty.search(searchTerm, function(data) {
     console.log(data)
     res.setHeader('content-type', 'application/json');
     //res.setHeader('Guitarparty-Api-Key',apikey)
@@ -32,7 +34,7 @@ server.get('/movies', function(req, res) {
   console.log('GET /library')
   const searchTerm = req.query.title
   console.log('q='+searchTerm)
-  books.search(searchTerm, function(data) {
+  imdb.search(searchTerm, function(data) {
     console.log(data)
     res.setHeader('content-type', 'application/json');
     res.send(data.code, data.response);
