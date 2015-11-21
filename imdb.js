@@ -8,12 +8,7 @@ exports.search = function(query, callback) {
   if (typeof query !== 'string' || query.length === 0) {
     callback({code:400, response:{status:'error', message:'missing query (q parameter)'}})
   }
-  //const url = 'https://www.googleapis.com/books/v1/volumes'    // Original bookshop API 
-  //const url = 'http://api.guitarparty.com/v2/songs/'          //  GuitarParty Api
-  //const url = 'https://api.forecast.io/forecast/1be111df2a2f9259ea79c73db1086aae'
   const url = 'http://www.myapifilms.com/imdb'
-  //const query_string = {q: query,maxResults: 40, fields: 'items(id,volumeInfo(title,authors))'} //Bookshop query
-  //const url = 'http://www.omdbapi.com/?'   //movie APi
   const query_string = {title:query}  //movie Api query
   request.get({url: url, qs: query_string}, function(err, res, body) {
     if (err) {
