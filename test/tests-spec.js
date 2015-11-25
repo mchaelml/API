@@ -1,6 +1,6 @@
 /*istanbul ignore next*/
 
-var list = require("../modules/shopping")
+var list = require("../modules/tests")
 
 describe('Shopping List', function () {
 

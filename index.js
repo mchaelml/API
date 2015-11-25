@@ -6,6 +6,9 @@ var fs = require('fs')
 var restify = require('restify')
 var server = restify.createServer()
 var mongo = require('./mongo.js')
+
+var list = require('./modules/tests') //testing
+
 server.use(restify.fullResponse())
 server.use(restify.queryParser())
 server.use(restify.bodyParser())
