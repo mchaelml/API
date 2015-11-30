@@ -2,6 +2,7 @@
 var mongoose = require('mongoose')
 /* the database name is stored in a private variable instead of being 'hard-coded' so it can be replaced using the 'rewire' module. This avoids the need for the unit tests to run against the 'live' database. */
 var database = 'api'
+var Schema = mongoose.Schema
 /* the server connections string includes both the database server IP address and the name of the database. */
 const server = 'mongodb://'+process.env.IP+'/'+database
 console.log(server)
@@ -17,7 +18,9 @@ const listSchema = new mongoose.Schema({
     
 })
 /* the schema is associated with the 'List' collection which means it will be applied to all documents added to the collection. */
-const List = mongoose.model('List', listSchema)
+const List = mongoose.model('List', listSchema);
+//var List = mongoose.model('List',listSchema);
+module.export = List;
 /* END OF MONGOOSE SETUP */
 
 /* notice we are using the 'arrow function' syntax. In this example there are more than one parameter so they need to be enclosed in brackets. */

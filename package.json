@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "test": "jasmine-node test --color --verbose --autotest --watch",
-    "coverage": "istanbul cover -x **test** -x **index.js** --include-all-sources jasmine-node test"
+    "mongotest":  "jasmine-node mongoosetest/rightmongotest-spec.js --color --verbose --autotest --watch",
+    "mongoosetest": "jasmine-node mongoosetest --color --verbose --autotest --watch",
+    "coverage": "istanbul cover -x **test/tests-spec.js** -x --include-all-sources jasmine-node test"
   },
   "keywords": [
     "this",
