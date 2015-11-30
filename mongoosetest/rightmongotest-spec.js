@@ -48,14 +48,24 @@ describe("Hello World Server", function() {
       //mongo.addList(function(data,result){
           
           request.get(base_url, function(error, response, body) {
-            body = "hi"
-            expect(body).toBe("hi");
+            //body = "hi"
+            //expect(body).toBe("hi")
+            const jsona = JSON.parse(body)
+            const items = jsona.items
+            expect(body).toEqual(body);
             done();
-            //mongo.addList(function(data,result){
-                //expect(result).toEqual(data)
+            mongo.addList(jsona,function(jsona){
+            });
+            
+            mongo.getAll(function(result){
+	        expect(result).not.toEqual([]) 
+	        done();
+	   }); 
+            
+                //expect(result).toEqual(items)
                 //done();
             //});
-            //done();
+            
       });
       //});
     });
