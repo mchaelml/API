@@ -45,11 +45,9 @@ describe("Hello World Server", function() {
     });
 
     it("returns Hello World", function(done) {
-      //mongo.addList(function(data,result){
-          
+      
           request.get(base_url, function(error, response, body) {
-            //body = "hi"
-            //expect(body).toBe("hi")
+
             const jsona = JSON.parse(body)
             const items = jsona.items
             expect(body).toEqual(body);
@@ -62,12 +60,7 @@ describe("Hello World Server", function() {
 	        done();
 	   }); 
             
-                //expect(result).toEqual(items)
-                //done();
-            //});
-            
       });
-      //});
     });
     
   });
